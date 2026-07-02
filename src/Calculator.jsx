@@ -1,6 +1,5 @@
-import React from "react";
 import { useState } from "react";
-import "./calculator.css";
+import styles from "./Calculator.module.css";
 
 const Calculator = () => {
   const number = [
@@ -22,7 +21,7 @@ const Calculator = () => {
     "c",
   ];
 
-  const [button, setButton] = useState(number);
+  // const [button, setButton] = useState(number);
   const [inputvalue, setInputValue] = useState("");
 
   function handlcalc(btnValue) {
@@ -36,19 +35,28 @@ const Calculator = () => {
     }
   }
 
+  // const getButtonClass = (btn) => {
+  //   if (btn === "=") return styles.equals;
+  //   if (btn === "c") return styles.clear;
+  //   if (["+", "-", "*", "/"].includes(btn)) return styles.operator;
+  //   return "";
+  // };
+
   return (
     <>
-      {/* {card2.map((card) => (
-        <li>
-          <h2>{card.title}</h2>
-          <p>{card.text}</p>
-          <button>item</button>
-        </li>
-      ))} */}
-      <input type="text" value={inputvalue} readOnly />
-      <div className="container">
-        {button.map((btn, index) => (
-          <button key={index} onClick={() => handlcalc(btn)}>
+      <input
+        type="text"
+        value={inputvalue}
+        readOnly
+        className={styles.display}
+      />
+      <div className={styles.container}>
+        {number.map((btn, index) => (
+          <button
+            key={index}
+            onClick={() => handlcalc(btn)}
+            className={styles.button}
+          >
             {btn}
           </button>
         ))}
