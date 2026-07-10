@@ -21,27 +21,23 @@ const Calculator = () => {
     "c",
   ];
 
-  // const [button, setButton] = useState(number);
   const [inputvalue, setInputValue] = useState("");
 
   function handlcalc(btnValue) {
-    if (btnValue === "c") {
-      setInputValue("");
-    } else if (btnValue === "=") {
-      const res = eval(inputvalue);
-      setInputValue(res);
-    } else {
-      setInputValue(inputvalue + btnValue);
+    try {
+      if (btnValue === "c") {
+        setInputValue("");
+      } else if (btnValue === "=") {
+        const res = eval(inputvalue);
+        setInputValue(res);
+      } else {
+        setInputValue(inputvalue + btnValue);
+      }
+    } catch (error) {
+      setInputValue("Error");
+      console.log(error);
     }
   }
-
-  // const getButtonClass = (btn) => {
-  //   if (btn === "=") return styles.equals;
-  //   if (btn === "c") return styles.clear;
-  //   if (["+", "-", "*", "/"].includes(btn)) return styles.operator;
-  //   return "";
-  // };
-
   return (
     <>
       <input
